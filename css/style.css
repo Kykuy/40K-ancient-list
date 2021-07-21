@@ -1,0 +1,317 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --background: #1a1a1a;
+  --delimiter: #1f5a56;
+  --scrollbarColor: #0ccac4;
+  --mainFontColor: #e5e5e5;
+  --labelMainColor: #495057;
+}
+
+a {
+  color: #bbfefa;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+a:hover {
+  color: #70fdf4;
+  text-decoration: underline;
+}
+
+body {  
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  background-color: var(--background);
+  color: var(--mainFontColor);  
+}
+
+.wrapper {  
+  margin: 0 auto;  
+  height: 100vh;
+  max-width: min(100vw, 1100px);
+  display: flex;
+  flex-flow: column nowrap;  
+}
+
+header {
+  padding: 0 5px;
+}
+
+.title {
+  font-family: 'Orbitron', "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 2.5rem;   
+}
+
+.hero {
+  color: #b2b2b2;
+  font-weight: 300;
+  margin: 5px 0 10px 0;
+}
+
+.hero span {
+  color: #bbfefa;
+}
+
+main {   
+  display: flex;    
+  flex-flow: column nowrap;
+  overflow-y: auto;
+  padding: 5px;   
+}
+
+/* INPUT STYLING */
+
+.inputGroup {
+  display: flex;
+}
+
+.searchField:focus {  
+  color: #495057;
+  background-color: #fff;
+  border-color: white;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgb(187 254 250 / 25%);
+}
+
+.searchLabel,
+.searchField,
+.clearButton {
+  min-height: calc(1.5em + 0.75rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ced4da;
+}
+
+.searchLabel, .clearButton {
+  background-color: #e9ecef;
+  color: var(--labelMainColor);
+}
+
+.searchLabel {
+  display: inline-block;
+  max-width: 250px;
+  text-align: center;
+  padding: 0 6px;
+  line-height: 1.2;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.clearButton {
+  color: #212529;
+  background-color: #b2b2b2;
+  border-color: #b2b2b2;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.clearButton:hover {
+  color: white;
+  background-color: black;  
+}
+
+.clearButton:active {  
+  color: #212529;
+  background-color: #999999;
+  border-color: #929292;
+}
+
+.clearButton:focus {
+  color: #212529;
+  background-color: #9f9f9f;
+  border-color: #999999;
+  box-shadow: 0 0 0 0.2rem rgb(156 157 157 / 50%);
+}
+
+/* custom toggle radio style start */
+
+.searchModeToggle:hover,
+.searchModeToggleLabel:hover,
+.clearButton:hover {
+  cursor: pointer;  
+}
+
+.searchModeToggle {
+  position: relative;
+  appearance: none;
+  width: 1rem;
+  height: 1rem;
+  font-size: 1rem;      
+  border: 2px solid gray;
+  border-radius: 50%;  
+  transition: 0.2s all linear;  
+}
+
+.searchModeToggle::before,
+.searchModeToggle::after {  
+  opacity: 0;
+  transition: 0.25s all linear;
+}
+
+.searchModeToggle::before {
+  position: absolute;    
+  content: '|';
+  top: -5px;
+  left: -1px;
+  font-size: 12px;
+  font-weight: 900;
+  transform: skewX(36deg);  
+  color: #000000;  
+}
+
+.searchModeToggle::after {
+  position: absolute;  
+  top: -11px;
+  right: -1px;
+  content: '|';
+  font-size: 16px;
+  font-weight: 900;
+  transform: skewX(-31deg);  
+  color: #000000;  
+} 
+
+.searchModeToggle:disabled {
+  cursor: not-allowed;
+  border-color: var(--labelMainColor);
+  opacity: 0.75;
+}
+
+.searchModeToggle:disabled + .datatypeLabel {
+  cursor: not-allowed;
+  opacity: 0.75;
+}
+
+.searchModeToggle:checked {
+  box-shadow: 0px 0px 2px #000000;
+  border-color: var(--labelMainColor);  
+}
+
+.searchModeToggle:checked + .datatypeLabel {
+  font-weight: 600;  
+  text-decoration: underline;
+}
+
+.searchModeToggle:checked::before {
+  top: -5px;
+  left: -1px;
+  animation: 0.15s linear 1 forwards fadein;
+}
+
+.searchModeToggle:checked::after {
+  top: -11px;
+  right: -1px;
+  animation: 0.15s linear 0.15s 1 forwards fadein;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* custom radio button style end */
+
+.searchField {
+  flex-grow: 1;
+  line-height: 1.5;
+}
+
+.searchField::-webkit-search-cancel-button {
+  display: none; /* remove the in-built clear button for webkit browsers since it's a bit tricky to track it and grab it via js */
+}
+
+/* OUTPUT STYLING */
+
+.output {
+  margin-top: 10px;  
+  margin-bottom: 3px; 
+  overflow-y: auto;  
+  scrollbar-width: thin; /* poor man's scrollbar styles for firefox */
+  scrollbar-color: var(--scrollbarColor); 
+}
+
+.output::-webkit-scrollbar { /* full scrollbar styles for webkit */
+  width: 0.5em;
+}
+ 
+.output::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.3);
+}
+ 
+.output::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbarColor);
+  border: 1px solid slategrey;
+  border-radius: 25px;
+}
+
+.output::-webkit-scrollbar-thumb:hover {
+  background-color:rgba(169, 0, 0, 1);
+}
+
+.affix {
+  display: flex;  
+  align-items: center;   
+  border-top: 1px solid var(--delimiter);  
+  border-left: 2px solid var(--delimiter);
+  border-bottom: 1px solid var(--delimiter);   
+}
+
+.affix:first-child {
+  border-top: 2px solid var(--delimiter);
+}
+
+.affix:last-child {
+  border-bottom: 2px solid var(--delimiter); 
+}
+
+.affixName {
+  display: flex;
+  border-right: 2px solid var(--delimiter);
+  align-self: stretch;
+  justify-content: center;
+  align-items: center;
+  flex: 1 0 20%;
+  color: #dd9e55;
+  word-break: break-all; /* if some madlad decides to browse this from phone at least he will have some visual fidelity */
+}
+
+.enchantments {
+  flex: 1 1 100%;
+  text-align: auto;
+  padding: 5px;
+}
+
+.enchantments article:not(:last-child) {
+  border-bottom: 1px solid var(--delimiter);
+}
+
+.enchantments article p:first-child {
+  margin-top: 3px;
+}
+
+.enchantments article p:last-child {
+  margin-bottom: 3px;
+}
+
+/* extra styles for output text */
+
+.highlighted {
+  color: #bbfefa;  
+}
+
+.bold {
+  font-weight: bold;
+}
+

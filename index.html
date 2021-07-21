@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>40K: Inquisitor - Ancient Relic List</title>
+  <link rel="stylesheet" href="css/style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"> <!-- font -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class = "wrapper">
+
+    <header>
+      <h1 class = "title">40K: Inquisitor - Ancient Relic List</h1>
+      <p class = "hero">By Kykuy, updated for <span>2.4.0c</span>. All displayed data provided by <a href="https://github.com/mome-borogove/40K-ancient-list/">Mome Borogove</a>.
+      For questions, visit <a href="https://discord.gg/inquisitor40k">40K: Inquisitor Discord</a>. Submit bugs at <a href="https://github.com/Kykuy/40K-ancient-list/issues">Github</a>.
+    </header></p>
+
+    <main>
+      <section class = "userInput">
+        <section class = "inputGroup">        
+          <label for = "searchInput" class = "searchLabel">Filter:
+            <div class = "toggleWrapper">
+              <input type = "radio" name = "searchMode" id = "byAffix" class = "searchModeToggle" checked>
+              <label for = "byAffix" class = "searchModeToggleLabel">By affix</label>
+              <input type = "radio" name = "searchMode" id = "byEnch" class = "searchModeToggle">
+              <label for = "byEnch" class = "searchModeToggleLabel">By enchantment</label>
+            </div>
+          </label>
+          <input type = "search" class = "searchField" name = "searchInput" id = "searchInput" placeholder="enter affix/enchantment...">
+          <button class = "clearButton">Clear</button>
+        </section>        
+      </section>
+    
+      <section class = "output"> <!-- filled by javascript -->
+    
+      </section>
+    </main>
+
+  </div>
+
+</body>
+<script src="js/script.js"></script>
+</html>
