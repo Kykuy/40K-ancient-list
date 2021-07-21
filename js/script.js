@@ -111,8 +111,8 @@ async function displayDataOnFirstLoad() {
 
   populateDatabase(arrayedData);
   createHtml(affixesDatabase);
-  console.log(arrayedData);
-  console.log(affixesDatabase);
+  //console.log(arrayedData);
+  //console.log(affixesDatabase);
 }
 
 function populateDatabase(arrayedData) {
